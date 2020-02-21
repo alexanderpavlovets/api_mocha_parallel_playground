@@ -1,0 +1,32 @@
+{
+  "name": "api_mocha_parallel_playground",
+  "version": "1.0.0",
+  "description": "- should be Java and Allure itself on the machine",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha --recursive --reporter mochawesome --reporter-options reportDir=report,reportFilename=report,json=false specs -t 120000 --exit",
+    "test-par": "mocha-parallel-tests --recursive --reporter mochawesome --reporter-options reportDir=report,reportFilename=report,json=false specs -t 120000 --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderpavlovets/api_mocha_parallel_playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderpavlovets/api_mocha_parallel_playground/issues"
+  },
+  "homepage": "https://github.com/alexanderpavlovets/api_mocha_parallel_playground#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chance": "^1.1.4",
+    "mocha": "^6.2.2",
+    "mocha-parallel-tests": "^2.3.0",
+    "mochawesome": "^4.1.0",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  }
+}
