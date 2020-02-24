@@ -3,7 +3,7 @@ const {runMochaInParallel, getFilesListFromDirRecursively} = require('./parallel
 function createMochaCommand(pathToSpecFile) {
   return `node ./node_modules/.bin/mocha ${pathToSpecFile}\
   --reporter mochawesome\
-  --reporter-options reportDir=report,reportFilename=report${getRandomString()}\
+  --reporter-options reportDir=report,reportFilename=report${getRandomString()},html=false\
   --timeout 3000`
 }
 
@@ -35,5 +35,6 @@ function getRandomString(params = {}) {
   return result;
 }
 
-// Mochawesome report combination:
-// https://github.com/testdrivenio/cypress-mochawesome-s3/blob/master/scripts/combine.js
+// Merge the report:
+// ./node_modules/.bin/mochawesome-merge ./report/*.json > ./report/mochawesome.json
+// ./node_modules/.bin/marge ./report/mochawesome.json --reportDir ./report --reportFilename report
