@@ -7,6 +7,9 @@ async function runMochaInParallel(options) {
   let busyThreadsCounter = 0
 
   async function runOneTest() {
+    // console.log('_________________________________ Attempt to run test _________________________________')
+    // console.log(`_________________________________ Busy threads now are: ${busyThreadsCounter}_________________________________`)
+    // console.log(`_________________________________ Commands to run left: ${commandsList.length} _________________________________`)
     if (commandsList.length && busyThreadsCounter < threadsCount) {
       busyThreadsCounter++
       await execWrap(commandsList.splice(0, 1)[0]) // splice(0, 1)[0] = take first element, also remove it from initial array

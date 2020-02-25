@@ -19,6 +19,17 @@ function getFilesListFromDirRecursively(pathToDir, filesList = []) {
   return filesList
 }
 
+function getTestsFromFile(pathToFile) {
+  const content = fs.readFileSync(pathToFile, 'utf8')
+
+  const testsInFile = content.match(/(?<=it\(('|"))(.*?)(?=('|"),)/g)
+
+  return testsInFile.map(testName => [pathToFile, testName])
+}
+
+
+
 module.exports = {
-  getFilesListFromDirRecursively
+  getFilesListFromDirRecursively,
+  getTestsFromFile
 }
