@@ -19,6 +19,7 @@ function getFilesListFromDirRecursively(pathToDir, filesList = []) {
   return filesList
 }
 
+// TODO: continue with it, if want. Doesn't work for now. This is very beginning.
 function getTestsFromFile(pathToFile) {
   const content = fs.readFileSync(pathToFile, 'utf8')
 

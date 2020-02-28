@@ -1,10 +1,10 @@
-const {runMochaInParallel, getFilesListFromDirRecursively, getTestsFromFile} = require('./parallel_run')
+const {runMochaInParallel, getFilesListFromDirRecursively} = require('./parallel_run')
 
 function createMochaCommand(pathToSpecFile) {
   return `node ./node_modules/.bin/mocha ${pathToSpecFile}\
   --reporter mochawesome\
   --reporter-options reportDir=report,reportFilename=report${getRandomString()},html=false\
-  --timeout 3000`
+  --timeout 30000`
 }
 
 const commandsList = getFilesListFromDirRecursively('./specs').map(createMochaCommand)
@@ -16,26 +16,6 @@ const config = {
 }
 
 runMochaInParallel(config)
-
-// const filesWithSpecs = getFilesListFromDirRecursively('./specs/films').map(getTestsFromFile)
-// console.log(filesWithSpecs)
-
-// function createMochaCommand(pathToSpecFile) {
-//   return `node ./node_modules/.bin/mocha ${pathToSpecFile}\
-//   --reporter mochawesome\
-//   --reporter-options reportDir=report,reportFilename=report${getRandomString()},html=false\
-//   --timeout 3000`
-// }
-
-// const commandsList = getFilesListFromDirRecursively('./specs').map(createMochaCommand)
-// const threadsCount = 5
-
-// const config = {
-//   commandsList,
-//   threadsCount
-// }
-
-// runMochaInParallel(config)
 
 
 function getRandomString(params = {}) {
